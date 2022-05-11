@@ -1,0 +1,125 @@
+@use "sass:meta";
+@import "_variables";
+
+// font import
+@import url("https://use.typekit.net/dlm3sbo.css");
+// backup required for accented c
+$primaryFont: "nimbus-sans", Helvetica;
+$condensedFont: "nimbus-sans-condensed", Helvetica;
+$extendedFont: "nimbus-sans-extended", Helvetic;
+
+$font-family: "nimbus-sans", Helvetica;
+
+html,
+body {
+  font-family: $font-family;
+}
+
+.display {
+  font-family: $extendedFont;
+  font-style: normal;
+  font-weight: 400;
+  @include font-size(51px);
+  @include line-height(61px, 51px);
+  margin-bottom: 16px;
+  /*
+    stroke isn't standard in any W3C spec
+    as text value read from data assumed progressive enhancement ok so only attempt to apply in supporting browsers
+    */
+  -webkit-text-fill-color: $black;
+  -webkit-text-stroke-width: 1px;
+
+  @include respond-to("desktop") {
+    @include font-size(103px);
+    @include line-height(124px, 103px);
+  }
+}
+
+@mixin displayVariations($args...) {
+  @each $name, $color in meta.keywords($args) {
+    .display_#{$name} {
+      -webkit-text-stroke-color: $color;
+    }
+  }
+}
+
+@include displayVariations($red: $red, $white: $white);
+
+.subtitle {
+  font-family: $extendedFont;
+  font-weight: 700;
+  @include font-size(15px);
+  @include line-height(18px, 15px);
+
+  @include respond-to("desktop") {
+    @include font-size(17px);
+    @include line-height(20px, 17px);
+  }
+}
+
+/* heading selectors so actual heading structure not bound by visuals and can better support accessibility */
+.h1 {
+  font-family: $condensedFont;
+  font-style: normal;
+  font-weight: 900;
+  @include font-size(30px);
+  @include line-height(36px, 30px);
+  letter-spacing: 0.02em;
+}
+
+.h1_active {
+  @include font-size(35px);
+  @include line-height(42px, 35px);
+}
+
+.h2 {
+  font-family: $condensedFont;
+  font-style: normal;
+  font-weight: 900;
+  @include font-size(23px);
+  @include line-height(28px, 23px);
+
+  @include respond-to("desktop") {
+    @include font-size(25px);
+    @include line-height(30px, 25px);
+  }
+}
+
+.h3 {
+  font-family: $condensedFont;
+  font-style: normal;
+  font-weight: 900;
+  @include font-size(14px);
+  @include line-height(17px, 14px);
+
+  @include respond-to("desktop") {
+    @include font-size(16px);
+    @include line-height(19px, 16px);
+  }
+}
+
+.body {
+  font-family: $primaryFont;
+  font-style: normal;
+  font-weight: 400;
+  @include font-size(13px);
+  @include line-height(15px, 13px);
+  text-transform: uppercase;
+
+  @include respond-to("desktop") {
+    @include font-size(15px);
+    @include line-height(18px, 15px);
+  }
+}
+
+/* default - assumed from (ETA) */
+.description,
+p {
+  font-family: $primaryFont;
+  font-style: normal;
+  font-weight: 400;
+  @include font-size(15px);
+  @include line-height(18px, 15px);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}

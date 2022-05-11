@@ -1,0 +1,24 @@
+@import "./src/styles/_variables";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh;
+}
+.content {
+  padding: 10px;
+  max-width: 375px;
+  @include respond-to("desktop") {
+    max-width: 1440px;
+  }
+}
+
+/* main header */
+.header_title {
+  white-space: pre;
+}
+.header_details {
+  max-width: 350px;
+}

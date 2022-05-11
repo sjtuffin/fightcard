@@ -1,0 +1,83 @@
+<div class="content">
+  <div class="matches flex">
+    <div class="matches_wrapper">
+      <abbr
+        id="eta"
+        title="Estimated Time of Arrival"
+        class="matches_eta block description"
+        >(ETA)</abbr
+      >
+      <ul class="matches_tablist flex" role="tablist">
+        <li
+          *ngFor="
+            let match of matches;
+            let i = index;
+            let first = first;
+            let last = last
+          "
+          [ngClass]="{ first: first, last: last, grow: !first && !last }"
+          class="matches_tab flex"
+        >
+          <button
+            (click)="selectTab(match)"
+            class="matches_button matches_button_time h2"
+            role="tab"
+            [attr.aria-controls]="'fight-'+i"
+            [attr.aria-selected]="selectedTab === match"
+            [attr.aria-describedby]="'eta'"
+          >
+            {{ match.time }}
+          </button>
+          <div class="matches_hr"></div>
+          <button
+            (click)="selectTab(match)"
+            class="matches_button matches_button_title h2 grow"
+            role="tab"
+            [attr.aria-controls]="'fight-'+i"
+            [attr.aria-selected]="selectedTab === match"
+          >
+            <span class="fighter inline-block">
+              <span class="fighter_name h3 block">{{
+                match.fighters[0].name
+              }}</span>
+              <span class="fighter_surname h1 block">{{
+                match.fighters[0].surname
+              }}</span>
+            </span>
+            <span class="fighter_versus description inline-block">vs</span>
+            <span class="fighter inline-block">
+              <span class="fighter_name h3 block">{{
+                match.fighters[1].name
+              }}</span>
+              <span class="fighter_surname h1 block">{{
+                match.fighters[1].surname
+              }}</span>
+            </span>
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div class="matches_tabpanels">
+      <div
+        *ngFor="let match of matches; let i = index"
+        id="fight-{{ i }}"
+        class="match"
+        role="tabpanel"
+        [attr.aria-hidden]="selectedTab !== match"
+      >
+        <figure class="match_figure">
+          <img
+            class="match_image"
+            src="/assets/images/{{ match.image }}"
+            alt="Promotional image of fighters posing"
+          />
+          <figcaption id="fight-caption-{{ i }}" class="sr-only">
+            {{ match.fighters[0].surname | titlecase }} versus
+            {{ match.fighters[1].surname | titlecase }}
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</div>

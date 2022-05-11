@@ -1,27 +1,45 @@
-# Fightcard
+# Fight Card
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
-## Development server
+## Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+To compile and preview the demo, run:
 
-## Code scaffolding
+```
+ng server --configuration production
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Unit tests are available and can be run with:
 
-## Build
+```
+ng test
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Implementation Notes
 
-## Running unit tests
+* Assume fight card component is part of a larger UI, so extract models and services to a `/common` directory.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+* Dots have subtle active state on the component guide (18px instead of 10px, at 0.2 opacity).
 
-## Running end-to-end tests
+* Ignore clipping of whyte's arm on the component guide - both prototypes show image
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+* Time animation -  opacity (0.5-1)
+                    animation-timing-function: ease-out;
+                    animation-duration: 600ms;
 
-## Further help
+* Name animation -  surname font size and line height (30,36 - 35,42)
+                    otherwise opacity (0.5 - 1)
+                    animation-timing-function: ease-out;
+                    animation-duration: 300ms;
+                   
+* Dot/Image animation - animations only specified for interactive elements.
+                    appears in keeping with time on mobile prototype (600ms, ease-out). 
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+---
+
+The ARIA `tab` role for interactive time and name buttons, seems most appropriate for underlying HTML markup.
+
+Both need be within a `tablist` and the associated image as the `tabpanel`.
+
+On desktop the line could be seen as a `<hr>` element, but doesn't fit with mobile so assume only decorative. Will remove semantic meaning though add element so more obvious where this aesthetic comes from.

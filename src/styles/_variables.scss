@@ -1,0 +1,46 @@
+@use "sass:math";
+
+/* breakpoints */
+$breakpoints: (
+  "desktop": 1200px,
+) !default;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "No value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+/* colours */
+
+$black: #0b0c08;
+$red: #d43b38;
+$white: #fff;
+$gold: #d2b085;
+
+/* rem font size - expects input in px */
+@mixin font-size($size, $base: 16) {
+  // strip px from inputs if included
+  $size_num: math.div($size, ($size * 0 + 1));
+  $base_num: math.div($base, ($base * 0 + 1));
+
+  // keep px if old browser support required
+  // font-size: $size_num + px;
+  font-size: math.div($size_num, $base_num) + rem;
+}
+
+/* unit less line-height - expects input in px */
+// could combine this with font-size
+// - more convenient though trade off in readability
+@mixin line-height($size, $fontSize) {
+  // strip px from inputs if included
+  $size_num: math.div($size, ($size * 0 + 1));
+  $font_num: math.div($fontSize, ($fontSize * 0 + 1));
+
+  line-height: math.div($size_num, $font_num);
+}
