@@ -2,6 +2,8 @@
 
 /* breakpoints */
 $breakpoints: (
+  // min width to start using base 16 font size
+  "mobile": 375px,
   "tablet": 760px,
   "desktop": 1200px,
 ) !default;
