@@ -29,7 +29,7 @@ body {
   -webkit-text-fill-color: $black;
   -webkit-text-stroke-width: 1px;
 
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     @include font-size(103px);
     @include line-height(124px, 103px);
   }
@@ -51,7 +51,7 @@ body {
   @include font-size(15px);
   @include line-height(18px, 15px);
 
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     @include font-size(17px);
     @include line-height(20px, 17px);
   }

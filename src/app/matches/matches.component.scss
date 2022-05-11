@@ -10,7 +10,7 @@
 
 .matches {
   flex-direction: column;
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     flex-direction: row;
   }
 }
@@ -22,7 +22,7 @@
   }
 }
 .matches_eta {
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     width: 142px;
     text-align: center;
     position: relative;
@@ -34,7 +34,7 @@
   position: relative;
   height: 100%;
 
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     flex-direction: column;
   }
 }
@@ -49,7 +49,7 @@
   &.last {
     align-items: flex-end;
   }
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     flex-direction: row;
     &.first,
     &.last {
@@ -73,7 +73,7 @@
     color: $white;
   }
 
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     height: 83px;
   }
 }
@@ -89,7 +89,7 @@
     margin-right: 0;
   }
 
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     width: 142px;
     margin: 0;
     .first & {
@@ -139,7 +139,7 @@
     }
   }
 
-  @include respond-to("desktop") {
+  @include respond-to("tablet") {
     margin: 0;
     width: 1px;
     height: calc(100% + 20px);
@@ -212,6 +212,7 @@
   display: grid;
   width: 100%;
   max-width: 620px;
+  place-items: center;
 }
 
 .match {
