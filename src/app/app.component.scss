@@ -8,7 +8,7 @@
   min-height: 100vh;
 }
 .content {
-  padding: 5%;
+  padding: 10px 5%;
   //max-width: 375px;
   @include respond-to("desktop") {
     max-width: 1440px;
