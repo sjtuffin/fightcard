@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 To compile and preview the demo, run:
 
 ```
-ng server --configuration production
+ng serve --configuration production
 ```
 
 Unit tests are available and can be run with:
